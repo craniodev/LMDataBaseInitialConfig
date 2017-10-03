@@ -5,7 +5,7 @@ using System.Text;
 
 namespace LMDataBaseInitialConfig.ConsoleApp
 {
-    public static class Parser
+    public static class ParserCommand
     {
         public static ICommand Parse(string commandString)
         {

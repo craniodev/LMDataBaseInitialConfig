@@ -13,7 +13,7 @@ namespace LMDataBaseInitialConfig.ConsoleApp
             {
                 Console.WriteLine();
                 Console.WriteLine("Enter command (help to display help): ");
-                var command = Parser.Parse(Console.ReadLine());
+                var command = ParserCommand.Parse(Console.ReadLine());
                 exit = command.Execute();
             }
 
