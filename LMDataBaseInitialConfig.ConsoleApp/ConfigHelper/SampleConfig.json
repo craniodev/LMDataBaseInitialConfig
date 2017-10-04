@@ -1,0 +1,20 @@
+﻿{
+  "connectionStrings": [
+    {
+      "key": "teste",
+      "value": "afsdfsfdfdf"
+    },
+    {
+      "key": "teste",
+      "value": "afsdfsfdfdf"
+    }
+  ],
+  "tables": [
+    {
+      "name": "Table1",
+      "insert": true,
+      "update": true,
+      "top": 99
+    }
+  ]
+}
