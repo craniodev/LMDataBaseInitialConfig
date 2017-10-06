@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using static LMDataBaseInitialConfig.ConsoleApp.SqlHelper.SqlField;
+using static LMDataBaseInitialConfig.ConsoleApp.Sql.SqlField;
 
-namespace LMDataBaseInitialConfig.ConsoleApp.SqlHelper
+namespace LMDataBaseInitialConfig.ConsoleApp.Sql
 {
     public class SqlTable
     {

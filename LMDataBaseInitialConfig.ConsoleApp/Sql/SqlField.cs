@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace LMDataBaseInitialConfig.ConsoleApp.SqlHelper
+namespace LMDataBaseInitialConfig.ConsoleApp.Sql
 {
     public class SqlField
     {

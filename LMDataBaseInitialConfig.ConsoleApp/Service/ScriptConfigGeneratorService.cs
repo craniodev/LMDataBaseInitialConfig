@@ -1,6 +1,6 @@
-﻿using LMDataBaseInitialConfig.ConsoleApp.ConfigHelper;
-using LMDataBaseInitialConfig.ConsoleApp.FileHelper;
-using LMDataBaseInitialConfig.ConsoleApp.SqlHelper;
+﻿using LMDataBaseInitialConfig.ConsoleApp.Config;
+using LMDataBaseInitialConfig.ConsoleApp.File;
+using LMDataBaseInitialConfig.ConsoleApp.Sql;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Text;
 
 namespace LMDataBaseInitialConfig.ConsoleApp.Service
 {
-    public class ScriptConfigGeneratorService
+    public class ScriptConfigGeneratorService : IScriptConfigGeneratorService
     {
         public ISqlHelper SqlHelper { get; }
         public IConfigHelpter ConfigHelper { get; }
@@ -23,12 +23,38 @@ namespace LMDataBaseInitialConfig.ConsoleApp.Service
 
         public string Generate(string tableName)
         {
-
             var sb = new StringBuilder();
 
+            var configTable = this.ConfigHelper.GetTable(tableName);
+            var table = this.SqlHelper.GetTable(tableName);
+            AddTableString(sb, table, configTable);
+            return sb.ToString();
 
-            var table = SqlHelper.GetTable(tableName);
+        }
 
+        public Dictionary<string, string> Generate()
+        {
+            var sb = new StringBuilder();
+
+            var ret = new Dictionary<string, string>();
+            var tablesConfig = this.ConfigHelper.GetTables();
+            foreach (var t in tablesConfig)
+            {
+
+                sb.Clear();
+                var table = this.SqlHelper.GetTable(t.Name);
+                AddTableString(sb, table, t);
+                ret.Add(t.Name, sb.ToString());
+
+            }
+
+            return ret;
+
+
+        }
+
+        private void AddTableString(StringBuilder sb, SqlTable table, ConfigTable configTable)
+        {
 
             var cols = string.Join(", ", (from f in table.Fields select f.Name).ToArray());
             var values = new List<string>();
@@ -60,19 +86,9 @@ namespace LMDataBaseInitialConfig.ConsoleApp.Service
 
             }
 
-            sb.Remove(sb.Length - 2,2); // Remove last break line
-
-            return sb.ToString();
+            sb.Remove(sb.Length - 2, 2); // Remove last break line
 
         }
-
-        public string Generate()
-        {
-            return string.Empty;
-
-        }
-
-
 
 
     }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace LMDataBaseInitialConfig.ConsoleApp.ConfigHelper
+namespace LMDataBaseInitialConfig.ConsoleApp.Config
 {
 
     public interface IConfigHelpter
@@ -13,10 +13,10 @@ namespace LMDataBaseInitialConfig.ConsoleApp.ConfigHelper
         void RemoveConn(string key);
         List<string> GetConnKeys();
 
-        string GetTable(string key);
-        string SetTable(string key);
+        ConfigTable GetTable(string key);
+        string SetTable(ConfigTable table);
         void RemoveTable(string key);
-        List<string> GetTableKeys();
+        List<ConfigTable> GetTables();
 
 
     }

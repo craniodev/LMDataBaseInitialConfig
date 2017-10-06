@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace LMDataBaseInitialConfig.ConsoleApp.FileHelper
+namespace LMDataBaseInitialConfig.ConsoleApp.File
 {
     public interface IFileHelper
     {
+
+        void Save(string fileName, string body);
+
 
 
     }

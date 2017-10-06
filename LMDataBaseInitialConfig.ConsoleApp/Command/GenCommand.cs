@@ -1,4 +1,7 @@
-﻿using LMDataBaseInitialConfig.ConsoleApp.ConfigHelper;
+﻿using LMDataBaseInitialConfig.ConsoleApp.Config;
+using LMDataBaseInitialConfig.ConsoleApp.File;
+using LMDataBaseInitialConfig.ConsoleApp.Service;
+using LMDataBaseInitialConfig.ConsoleApp.Sql;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,18 +10,25 @@ namespace LMDataBaseInitialConfig.ConsoleApp
 {
     public class GenCommand : ICommand
     {
-        private IConfigHelpter _ConfigHelpter;
+        private IScriptConfigGeneratorService _gen;
+        private IFileHelper _fileHelper;
 
-        public GenCommand(IConfigHelpter configHelpter)
+        public GenCommand(IScriptConfigGeneratorService gen, IFileHelper fileHelper)
         {
-
-            this._ConfigHelpter = configHelpter;
-
+            this._gen = gen;
+            this._fileHelper = fileHelper;
         }
 
         public bool Execute()
         {
-            throw new NotImplementedException();
+
+            var dic = _gen.Generate();
+            foreach (var t in dic)
+            {
+                _fileHelper.Save(string.Format($"{t.Key}.sql"), t.Value);
+            }
+
+            return false;
         }
 
 
