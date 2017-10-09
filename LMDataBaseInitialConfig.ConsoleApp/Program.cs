@@ -18,6 +18,7 @@ namespace LMDataBaseInitialConfig.ConsoleApp
                 Console.WriteLine("Enter command (help to display help): ");
                 var command = ParserCommand.Parse(Console.ReadLine(), myInject);
                 exit = command.Execute();
+
             }
 
 

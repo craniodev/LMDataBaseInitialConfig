@@ -9,12 +9,12 @@ namespace LMDataBaseInitialConfig.ConsoleApp.Config
     {
 
         string GetConn(string key);
-        string SetConn(string key);
+        void SetConn(string key, string value);
         void RemoveConn(string key);
         List<string> GetConnKeys();
 
         ConfigTable GetTable(string key);
-        string SetTable(ConfigTable table);
+        void SetTable(ConfigTable table);
         void RemoveTable(string key);
         List<ConfigTable> GetTables();
 

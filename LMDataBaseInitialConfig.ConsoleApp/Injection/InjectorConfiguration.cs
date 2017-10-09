@@ -22,7 +22,13 @@ namespace LMDataBaseInitialConfig.ConsoleApp.Injection
             serviceCollection.AddTransient<IConfigHelpter, ConfigHelpter>();
             serviceCollection.AddTransient<IFileHelper, File.FileHelper>();
             serviceCollection.AddTransient<ISqlHelper, Sql.SqlHelper>();
+
+
+            serviceCollection.AddTransient<ExitCommand, ExitCommand>();
             serviceCollection.AddTransient<GenCommand, GenCommand>();
+            serviceCollection.AddTransient<HelpCommand, HelpCommand>();
+            serviceCollection.AddTransient<AboutCommand, AboutCommand>();
+
 
 
         }

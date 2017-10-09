@@ -45,7 +45,9 @@ namespace LMDataBaseInitialConfig.ConsoleApp.Injection
 
         public T GetService<T>()
         {
-            return serviceProvider.GetService<T>();
+            var ret = serviceProvider.GetService<T>();
+            if (ret == null) throw new ApplicationException($"Service \"{typeof(T).ToString()}\" not mapped on InjectorConfiguration.");
+            return ret;
         }
 
 

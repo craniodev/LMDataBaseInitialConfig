@@ -73,9 +73,9 @@ INSERT INTO Table1 (ID, Name) VALUES (3, 'Item3')";
             var sqlHelperMoq = new Mock<ISqlHelper>();
             sqlHelperMoq.Setup(r => r.GetTable(sqlTable.Name)).Returns(sqlTable);
 
-            var listConfigTable = new List<ConfigTable>()
+            var listConfigTable = new List<LMDataBaseInitialConfig.ConsoleApp.Config.ConfigTable>()
             {
-                new ConfigTable("Table1",true,true,true)
+                new LMDataBaseInitialConfig.ConsoleApp.Config.ConfigTable("Table1",1,true,true,true)
             };
 
             var configHelpter = new Mock<IConfigHelpter>();
