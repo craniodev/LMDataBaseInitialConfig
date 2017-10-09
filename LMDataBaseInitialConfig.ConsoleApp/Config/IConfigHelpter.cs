@@ -19,6 +19,10 @@ namespace LMDataBaseInitialConfig.ConsoleApp.Config
         List<ConfigTable> GetTables();
 
 
+        void Load();
+        void Save();
+
+
     }
 
 }

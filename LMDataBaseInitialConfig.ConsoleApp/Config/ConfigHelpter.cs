@@ -4,16 +4,19 @@ using System.IO;
 using Newtonsoft.Json;
 using System;
 using System.Linq;
+using LMDataBaseInitialConfig.ConsoleApp.File;
 
 namespace LMDataBaseInitialConfig.ConsoleApp.Config
 {
     public class ConfigHelpter : IConfigHelpter
     {
         private Config _config;
+        private IFileHelper _fileHelper;
 
-
-        public ConfigHelpter()
+        public ConfigHelpter(IFileHelper fileHelper)
         {
+
+            this._fileHelper = fileHelper;
             Load();
         }
 
@@ -85,9 +88,10 @@ namespace LMDataBaseInitialConfig.ConsoleApp.Config
             return string.Concat(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "\\config.json");
         }
 
-        private void Load()
+        public void Load()
         {
-            if (!System.IO.File.Exists(GetConfigPath()))
+
+            if (!_fileHelper.Exists(GetConfigPath()))
             {
                 _config = new Config();
                 _config.Tables = new List<ConfigTable>();
@@ -95,13 +99,10 @@ namespace LMDataBaseInitialConfig.ConsoleApp.Config
             }
             else
             {
-                using (StreamReader r = new StreamReader(GetConfigPath()))
-                {
-                    string json = r.ReadToEnd();
-                    _config = JsonConvert.DeserializeObject<Config>(json);
-                }
-            }
+                string json = _fileHelper.Reader(GetConfigPath());
+                _config = JsonConvert.DeserializeObject<Config>(json);
 
+            }
 
             if (this._config.ConnectionStrings == null)
                 this._config.ConnectionStrings = new Dictionary<string, string>();
@@ -109,22 +110,13 @@ namespace LMDataBaseInitialConfig.ConsoleApp.Config
             if (this._config.Tables == null)
                 this._config.Tables = new List<ConfigTable>();
 
-
-
-
         }
 
-        private void Save()
+        public void Save()
         {
 
             var json = JsonConvert.SerializeObject(_config);
-            string mydocpath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            using (StreamWriter outputFile = new StreamWriter(GetConfigPath(), false))
-            {
-
-                outputFile.Write(json);
-            }
-
+            _fileHelper.Save(GetConfigPath(), json);
 
         }
 

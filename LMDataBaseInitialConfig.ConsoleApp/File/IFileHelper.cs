@@ -8,8 +8,8 @@ namespace LMDataBaseInitialConfig.ConsoleApp.File
     {
 
         void Save(string fileName, string body);
-
-
+        string Reader(string fileName);
+        bool Exists(string fileName);
 
     }
 
