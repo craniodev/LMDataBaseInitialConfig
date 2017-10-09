@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace LMDataBaseInitialConfig.Test
 {
-    public class ScriptConfigGeneratorService
+    public class ScriptConfigGeneratorServiceTest
     {
         [Fact]
         public void ScriptConfigGeneratorService_Generate()

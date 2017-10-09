@@ -11,7 +11,7 @@ using LMDataBaseInitialConfig.Test.Mock;
 
 namespace LMDataBaseInitialConfig.Test
 {
-    public class ConfigHelpter
+    public class ConfigHelpterTest
     {
 
         [Fact]

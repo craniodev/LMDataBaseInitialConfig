@@ -10,7 +10,7 @@ using LMDataBaseInitialConfig.ConsoleApp.Service;
 
 namespace LMDataBaseInitialConfig.Test
 {
-    public class GenCommand
+    public class GenCommandTest
     {
 
         [Fact]

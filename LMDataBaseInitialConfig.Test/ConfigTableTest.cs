@@ -13,7 +13,7 @@ namespace LMDataBaseInitialConfig.Test
 {
 
 
-    public class ConfigTable
+    public class ConfigTableTest
     {
         [Fact]
         public void ConfigTable_IsValid()
