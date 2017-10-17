@@ -19,6 +19,7 @@ namespace LMDataBaseInitialConfig.ConsoleApp
             this._gen = gen;
             this._fileHelper = fileHelper;
             this._configHelper = configHelper;
+
         }
 
         public bool Execute(string paran)
@@ -31,7 +32,7 @@ namespace LMDataBaseInitialConfig.ConsoleApp
                 sb.AppendLine("-- ================================================");
                 sb.AppendLine("-- Generated from LMDataBaseInitialConfig:");
                 sb.AppendLine("-- https://github.com/LogicalMinds/LMDataBaseInitialConfig");
-                sb.AppendLine($"-- Version: {this._configHelper.Version}  Script Date: {DateTime.Now.ToString()}");
+                sb.AppendLine($"-- Version: {this._configHelper.Version}  Script Date: {_configHelper.getDateTimeNow().ToString()}");
                 sb.AppendLine("-- ================================================");
                 sb.AppendLine(string.Empty);
                 sb.Append(t.Value);

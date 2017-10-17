@@ -4,6 +4,7 @@ using System.Text;
 using Dapper;
 using System.Data;
 using System.Data.SqlClient;
+using LMDataBaseInitialConfig.ConsoleApp.Config;
 
 namespace LMDataBaseInitialConfig.ConsoleApp.Sql
 {
@@ -17,12 +18,13 @@ namespace LMDataBaseInitialConfig.ConsoleApp.Sql
 
         private const string SQL_GET_TABLE_ROWNS = @"SELECT TOP {0} *
                                                     FROM {1}";
-
-
-
+        private IConfigHelpter _configHelpter;
         private string connectionString;
-        public SqlHelper()
+        public SqlHelper(Config.IConfigHelpter configHelpter)
         {
+
+            this._configHelpter = configHelpter;
+
             connectionString = @"Server=localhost;Database=RepomUsuario;Trusted_Connection=true;";
         }
 
@@ -48,6 +50,16 @@ namespace LMDataBaseInitialConfig.ConsoleApp.Sql
 
 
             var index = 0;
+
+
+
+            var tableConfig = _configHelpter.GetTable(name);
+            if (tableConfig == null) throw new NotSupportedException($"Table {name} not Supported by config");
+
+            var query = string.Format(SQL_GET_TABLE_ROWNS, 100, name);
+            if (!string.IsNullOrEmpty(tableConfig.Select))
+                query = tableConfig.Select;
+
             var rowns = Connection.Query(string.Format(SQL_GET_TABLE_ROWNS, 100, name));
             foreach (IDictionary<string, object> r in rowns)
             {

@@ -7,7 +7,7 @@ namespace LMDataBaseInitialConfig.ConsoleApp.Config
 
     public interface IConfigHelpter
     {
-
+        DateTime getDateTimeNow();
         string GetInitialScriptPath();
         string GetConfigPath();
         string GetConn(string key);

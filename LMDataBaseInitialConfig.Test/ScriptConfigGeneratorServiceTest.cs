@@ -75,7 +75,7 @@ INSERT INTO Table1 (ID, Name) VALUES (3, 'Item3')";
 
             var listConfigTable = new List<LMDataBaseInitialConfig.ConsoleApp.Config.ConfigTable>()
             {
-                new LMDataBaseInitialConfig.ConsoleApp.Config.ConfigTable("Table1",1,true,true,true)
+                new LMDataBaseInitialConfig.ConsoleApp.Config.ConfigTable("Table1",1,true,true,true,string.Empty)
             };
 
             var configHelpter = new Mock<IConfigHelpter>();

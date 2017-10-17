@@ -7,6 +7,7 @@ namespace LMDataBaseInitialConfig.ConsoleApp.Sql
 {
     public class SqlTable
     {
+
         public string Name { get; }
         public List<SqlField> Fields { get; }
         public List<SqlRow> Rows { get; }
@@ -26,15 +27,15 @@ namespace LMDataBaseInitialConfig.ConsoleApp.Sql
 
             SqlRow row = Rows.Count <= index ? null : Rows[index];
 
-            if(row == null)
-            {            
+            if (row == null)
+            {
                 row = new SqlRow();
                 Rows.Add(row);
             }
 
 
             row.AddCol(name, value);
-            
+
 
 
         }

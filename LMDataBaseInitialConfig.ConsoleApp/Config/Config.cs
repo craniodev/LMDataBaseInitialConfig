@@ -9,6 +9,15 @@ namespace LMDataBaseInitialConfig.ConsoleApp.Config
     [JsonObject]
     public class Config
     {
+
+        public Config()
+        {
+            ConnectionStrings = new Dictionary<string, string>();
+            Tables = new List<ConfigTable>();
+            InitialScriptPath = string.Empty;
+        }
+
+
         [JsonProperty("connection_strings")]
         public Dictionary<string, string> ConnectionStrings { get; set; }
 

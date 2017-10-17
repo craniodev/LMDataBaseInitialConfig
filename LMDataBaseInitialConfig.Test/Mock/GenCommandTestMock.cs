@@ -11,26 +11,25 @@ using LMDataBaseInitialConfig.Test.Mock;
 
 namespace LMDataBaseInitialConfig.Test.Mock
 {
-    public static class ConfigHelpterMock
+    public static class GenCommandTestMock
     {
 
-        public static string get_Json_ConfigHelpter_Load()
+        public static string get_sql_GenCommand_Execute_noParans_script()
         {
 
+            return MockHelper.GetSqlMock("GenCommand_Execute_noParans_script");
 
-
-
-            return MockHelper.GetJsonMock("ConfigHelpter_Load");
         }
 
-        public static string get_Json_ConfigHelpter_Save()
+
+
+        public static string get_sql_GenCommand_Execute_noParans_file()
         {
 
+            return MockHelper.GetSqlMock("GenCommand_Execute_noParans_file");
 
-
-
-            return MockHelper.GetJsonMock("ConfigHelpter_Save");
         }
+
 
 
     }

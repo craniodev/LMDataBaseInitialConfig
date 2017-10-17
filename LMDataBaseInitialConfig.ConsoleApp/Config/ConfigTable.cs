@@ -15,14 +15,16 @@ namespace LMDataBaseInitialConfig.ConsoleApp.Config
         public bool Update { get; set; }
         public bool Delete { get; set; }
         public int Top { get; set; }
+        public string Select { get; set; }
 
-        public ConfigTable(string name, int top, bool insert, bool update, bool delete)
+        public ConfigTable(string name, int top, bool insert, bool update, bool delete,string select)
         {
             this.Name = name;
             this.Top = top;
             this.Insert = insert;
             this.Update = update;
             this.Delete = delete;
+            this.Select = select;
 
         }
 

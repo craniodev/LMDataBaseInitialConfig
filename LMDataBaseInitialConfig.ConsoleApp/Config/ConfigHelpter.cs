@@ -136,6 +136,10 @@ namespace LMDataBaseInitialConfig.ConsoleApp.Config
 
         }
 
+        public DateTime getDateTimeNow()
+        {
+            return DateTime.Now;
+        }
     }
 
 

@@ -19,11 +19,11 @@ namespace LMDataBaseInitialConfig.Test
         public void ConfigTable_IsValid()
         {
 
-            var inValidTable = new LMDataBaseInitialConfig.ConsoleApp.Config.ConfigTable(string.Empty, 1, true, true, true);
+            var inValidTable = new LMDataBaseInitialConfig.ConsoleApp.Config.ConfigTable(string.Empty, 1, true, true, true,string.Empty);
             Assert.False(inValidTable.IsValid());
 
 
-            var validTable = new LMDataBaseInitialConfig.ConsoleApp.Config.ConfigTable("Table1", 1, true, true, true);
+            var validTable = new LMDataBaseInitialConfig.ConsoleApp.Config.ConfigTable("Table1", 1, true, true, true, string.Empty);
             Assert.True(validTable.IsValid());
 
 
