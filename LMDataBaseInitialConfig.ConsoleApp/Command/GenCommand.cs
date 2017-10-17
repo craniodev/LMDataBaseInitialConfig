@@ -26,6 +26,9 @@ namespace LMDataBaseInitialConfig.ConsoleApp
         {
             var sb = new StringBuilder();
             var dic = _gen.Generate();
+
+            var cont = 1;
+
             foreach (var t in dic)
             {
                 sb.Clear();
@@ -37,9 +40,11 @@ namespace LMDataBaseInitialConfig.ConsoleApp
                 sb.AppendLine(string.Empty);
                 sb.Append(t.Value);
 
-                var p = System.IO.Path.Combine(this._configHelper.GetInitialScriptPath(), string.Format($"{t.Key}.sql"));
+                var p = System.IO.Path.Combine(this._configHelper.GetInitialScriptPath(), string.Format($"{cont}-{t.Key}.sql"));
 
                 _fileHelper.Save(p, sb.ToString());
+
+                cont++;
             }
 
             return false;

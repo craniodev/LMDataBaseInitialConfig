@@ -36,22 +36,18 @@ namespace LMDataBaseInitialConfig.ConsoleApp.Sql
             }
         }
 
-
         public SqlTable GetTable(string name)
         {
 
-
             var myTable = new SqlTable(name);
             var retorno = Connection.Query<INFORMATION_SCHEMA_COLUMNS>(SQL_GET_TABLE_INFO, new { table = name });
+
             foreach (var r in retorno)
             {
                 myTable.AddField(r.COLUMN_NAME, SqlTypeToSqlFieldType(r.DATA_TYPE));
             }
 
-
             var index = 0;
-
-
 
             var tableConfig = _configHelpter.GetTable(name);
             if (tableConfig == null) throw new NotSupportedException($"Table {name} not Supported by config");
@@ -60,7 +56,7 @@ namespace LMDataBaseInitialConfig.ConsoleApp.Sql
             if (!string.IsNullOrEmpty(tableConfig.Select))
                 query = tableConfig.Select;
 
-            var rowns = Connection.Query(string.Format(SQL_GET_TABLE_ROWNS, 100, name));
+            var rowns = Connection.Query(query);
             foreach (IDictionary<string, object> r in rowns)
             {
 
@@ -77,6 +73,9 @@ namespace LMDataBaseInitialConfig.ConsoleApp.Sql
             return myTable;
 
         }
+
+      
+
 
 
         private SqlField.SqlFieldType SqlTypeToSqlFieldType(string sqlType)
@@ -104,7 +103,6 @@ namespace LMDataBaseInitialConfig.ConsoleApp.Sql
 
 
         }
-
 
         private class INFORMATION_SCHEMA_COLUMNS
         {
