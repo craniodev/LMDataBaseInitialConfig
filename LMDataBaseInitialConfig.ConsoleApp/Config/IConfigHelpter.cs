@@ -8,6 +8,8 @@ namespace LMDataBaseInitialConfig.ConsoleApp.Config
     public interface IConfigHelpter
     {
 
+        string GetInitialScriptPath();
+        string GetConfigPath();
         string GetConn(string key);
         void SetConn(string key, string value);
         void RemoveConn(string key);
@@ -18,6 +20,7 @@ namespace LMDataBaseInitialConfig.ConsoleApp.Config
         void RemoveTable(string key);
         List<ConfigTable> GetTables();
 
+        string Version { get; }
 
         void Load();
         void Save();

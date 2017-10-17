@@ -6,6 +6,6 @@ namespace LMDataBaseInitialConfig.ConsoleApp
 {
     public interface ICommand
     {
-        bool Execute();
+        bool Execute(string parans);
     }
 }

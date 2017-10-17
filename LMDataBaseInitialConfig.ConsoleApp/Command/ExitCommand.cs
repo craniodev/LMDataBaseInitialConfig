@@ -6,7 +6,7 @@ namespace LMDataBaseInitialConfig.ConsoleApp
 {
     public class ExitCommand : ICommand
     {
-        public bool Execute()
+        public bool Execute(string paran)
         {
             return true;
         }

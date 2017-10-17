@@ -65,20 +65,27 @@ namespace LMDataBaseInitialConfig.ConsoleApp.Service
 
                 foreach (var f in table.Fields)
                 {
+                    var v = r.GetValue(f.Name);
+                    if (r.GetValue(f.Name) == null)
+                        values.Add("NULL");
+                    else
+                        switch (f.Type)
+                        {
+                            case SqlField.SqlFieldType.tdatetime:
+                                values.Add(r.GetValue(f.Name).ToString());
+                                break;
+                            case SqlField.SqlFieldType.tnumber:
+                                values.Add(r.GetValue(f.Name).ToString());
+                                break;
+                            case SqlField.SqlFieldType.tbooelan:
+                                values.Add((bool)r.GetValue(f.Name) ? "1" : "0");
+                                break;
+                            case SqlField.SqlFieldType.tstring:
+                                values.Add(string.Concat("'", r.GetValue(f.Name).ToString(), "'"));
 
-                    switch (f.Type)
-                    {
-                        case SqlField.SqlFieldType.tdatetime:
-                            values.Add(r.GetValue(f.Name).ToString());
-                            break;
-                        case SqlField.SqlFieldType.tnumber:
-                            values.Add(r.GetValue(f.Name).ToString());
-                            break;
-                        case SqlField.SqlFieldType.tstring:
-                            values.Add(string.Concat("'", r.GetValue(f.Name).ToString(), "'"));
-                            break;
+                                break;
 
-                    }
+                        }
 
                 }
 

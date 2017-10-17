@@ -10,7 +10,8 @@ namespace LMDataBaseInitialConfig.ConsoleApp.Sql
         {
             tstring,
             tnumber,
-            tdatetime
+            tdatetime,
+            tbooelan
         }
 
         public SqlField(string name, SqlFieldType type)

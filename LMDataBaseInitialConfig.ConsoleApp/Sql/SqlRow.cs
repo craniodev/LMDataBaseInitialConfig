@@ -17,6 +17,7 @@ namespace LMDataBaseInitialConfig.ConsoleApp.Sql
         public IConvertible GetValue(string col)
         {
             cols.TryGetValue(col, out IConvertible v);
+
             return v;
 
         }
@@ -32,6 +33,9 @@ namespace LMDataBaseInitialConfig.ConsoleApp.Sql
 
 
         }
+
+
+
 
     }
 

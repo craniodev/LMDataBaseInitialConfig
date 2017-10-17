@@ -12,20 +12,33 @@ namespace LMDataBaseInitialConfig.ConsoleApp
     {
         private IScriptConfigGeneratorService _gen;
         private IFileHelper _fileHelper;
+        private IConfigHelpter _configHelper;
 
-        public GenCommand(IScriptConfigGeneratorService gen, IFileHelper fileHelper)
+        public GenCommand(IScriptConfigGeneratorService gen, IFileHelper fileHelper, Config.IConfigHelpter configHelper)
         {
             this._gen = gen;
             this._fileHelper = fileHelper;
+            this._configHelper = configHelper;
         }
 
-        public bool Execute()
+        public bool Execute(string paran)
         {
-
+            var sb = new StringBuilder();
             var dic = _gen.Generate();
             foreach (var t in dic)
             {
-                _fileHelper.Save(string.Format($"{t.Key}.sql"), t.Value);
+                sb.Clear();
+                sb.AppendLine("-- ================================================");
+                sb.AppendLine("-- Generated from LMDataBaseInitialConfig:");
+                sb.AppendLine("-- https://github.com/LogicalMinds/LMDataBaseInitialConfig");
+                sb.AppendLine($"-- Version: {this._configHelper.Version}  Script Date: {DateTime.Now.ToString()}");
+                sb.AppendLine("-- ================================================");
+                sb.AppendLine(string.Empty);
+                sb.Append(t.Value);
+
+                var p = System.IO.Path.Combine(this._configHelper.GetInitialScriptPath(), string.Format($"{t.Key}.sql"));
+
+                _fileHelper.Save(p, sb.ToString());
             }
 
             return false;

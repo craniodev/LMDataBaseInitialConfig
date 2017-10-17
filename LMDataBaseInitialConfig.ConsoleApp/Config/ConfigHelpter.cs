@@ -13,11 +13,27 @@ namespace LMDataBaseInitialConfig.ConsoleApp.Config
         private Config _config;
         private IFileHelper _fileHelper;
 
+
+        public string Version
+        {
+            get
+            {
+                return this._config.Version;
+            }
+        }
+
         public ConfigHelpter(IFileHelper fileHelper)
         {
 
             this._fileHelper = fileHelper;
             Load();
+        }
+
+        public string GetInitialScriptPath()
+        {
+
+            return _config.InitialScriptPath;
+
         }
 
         public string GetConn(string key)
@@ -83,7 +99,7 @@ namespace LMDataBaseInitialConfig.ConsoleApp.Config
             this.Save();
         }
 
-        private string GetConfigPath()
+        public string GetConfigPath()
         {
             return string.Concat(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "\\config.json");
         }

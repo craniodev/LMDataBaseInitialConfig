@@ -13,7 +13,7 @@ namespace LMDataBaseInitialConfig.ConsoleApp
             this.command = command;
         }
 
-        public bool Execute()
+        public bool Execute(string paran)
         {
             Console.WriteLine("'{0}' is not recognized as an internal command.", command);
             return false;

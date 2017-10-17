@@ -6,7 +6,7 @@ namespace LMDataBaseInitialConfig.ConsoleApp
 {
     public class HelpCommand : ICommand
     {
-        public bool Execute()
+        public bool Execute(string paran)
         {
 
             Console.WriteLine(getAbout());

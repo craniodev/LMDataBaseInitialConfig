@@ -16,7 +16,7 @@ namespace LMDataBaseInitialConfig.Test
         [Fact]
         public void GenCommand_Execute_noParans()
         {
-
+            var fileCondig = new Mock<IConfigHelpter>();
             var fileHelper = new Mock<IFileHelper>();
 
             const string tableScriptReturn = @"INSERT INTO Table1 (ID, Name) VALUES (1, 'Item1')
@@ -30,9 +30,9 @@ INSERT INTO Table1 (ID, Name) VALUES (3, 'Item3')";
             genMock.Setup(m => m.Generate()).Returns(dic);
 
 
-            var GenCommand = new LMDataBaseInitialConfig.ConsoleApp.GenCommand(genMock.Object, fileHelper.Object);
+            var GenCommand = new LMDataBaseInitialConfig.ConsoleApp.GenCommand(genMock.Object, fileHelper.Object, fileCondig.Object);
 
-            GenCommand.Execute();
+            GenCommand.Execute(string.Empty);
 
 
             fileHelper.Verify(c => c.Save(It.IsAny<string>(), It.IsAny<string>()), Times.Once(), "Method Save from FileHelper was not invoked");

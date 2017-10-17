@@ -15,6 +15,19 @@ namespace LMDataBaseInitialConfig.ConsoleApp.Config
         [JsonProperty("tables")]
         public List<ConfigTable> Tables { get; set; }
 
+        [JsonProperty("initial_script_path")]
+        public string InitialScriptPath { get; set; }
+
+        [JsonProperty("version")]
+        public string Version
+        {
+            get
+            {
+                return "beta 1";
+
+            }
+        }
+
     }
 
 }

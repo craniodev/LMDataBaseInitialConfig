@@ -28,6 +28,8 @@ namespace LMDataBaseInitialConfig.ConsoleApp.Injection
             serviceCollection.AddTransient<GenCommand, GenCommand>();
             serviceCollection.AddTransient<HelpCommand, HelpCommand>();
             serviceCollection.AddTransient<AboutCommand, AboutCommand>();
+            serviceCollection.AddTransient<ConfigCommand, ConfigCommand>();
+
 
 
 

@@ -23,6 +23,7 @@ namespace LMDataBaseInitialConfig.ConsoleApp
                 case "about": return injector.GetService<AboutCommand>();
                 case "help": return injector.GetService<HelpCommand>();
                 case "gen": return injector.GetService<GenCommand>();
+                case "config": return injector.GetService<ConfigCommand>();
                 default: return new DeafultCommand(commandName);
 
             }
